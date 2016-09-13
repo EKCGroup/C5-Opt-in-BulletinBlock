@@ -1,6 +1,6 @@
 <?php  
 
-namespace Concrete\Package\RemsCourse\Block\OptInBulletin;
+namespace Concrete\Package\OptInBulletin\Block\OptInBulletin;
 use \Concrete\Core\Block\BlockController, BlockType, Loader;
 
 defined('C5_EXECUTE') or die(_("Access Denied."));
