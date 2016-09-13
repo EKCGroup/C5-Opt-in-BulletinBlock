@@ -3,7 +3,6 @@
 $u = new User(); 
 $ui = UserInfo::getByID($u->getUserID()); 
 $subscription_status = $ui->getAttribute('staffbulletin_subscription');
-//$subscription_status = $ui->setAttribute('staffbulletin_subscription', '1');
 echo $subscription_status; 
 
 if ($subscription_status == 0) { ?>

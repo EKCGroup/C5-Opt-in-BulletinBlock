@@ -11,10 +11,10 @@ class Controller extends BlockController {
     protected $btInterfaceWidth = "400";
     protected $btInterfaceHeight = "300";
     protected $btWrapperClass = 'ccm-ui';
-    protected $btCacheBlockRecord = true;
-    protected $btCacheBlockOutput = true;
-    protected $btCacheBlockOutputOnPost = true;
-    protected $btCacheBlockOutputForRegisteredUsers = true;
+    protected $btCacheBlockRecord = false;
+    protected $btCacheBlockOutput = false;
+    protected $btCacheBlockOutputOnPost = false;
+    protected $btCacheBlockOutputForRegisteredUsers = false;
 		
     public function getBlockTypeName() {
         return t("Opt-in Bulletin");

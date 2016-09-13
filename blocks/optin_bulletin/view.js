@@ -1,4 +1,6 @@
 $(function() {
+    
+    //Subscribes User
     $('a[data-action=block-subscribe-page]').magnificPopup({
         type: 'ajax',
     });
@@ -14,9 +16,8 @@ $(function() {
         });
         return false;
     });
-});
-
-$(function() {
+    
+    //Unsubscribes User
     $('a[data-action=block-unsubscribe-page]').magnificPopup({
         type: 'ajax',
     });
