@@ -7,7 +7,6 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
 class Controller extends BlockController {
 		
-    protected $btTable = 'btOptInBulletin';
     protected $btInterfaceWidth = "400";
     protected $btInterfaceHeight = "300";
     protected $btWrapperClass = 'ccm-ui';
