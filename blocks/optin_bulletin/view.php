@@ -7,16 +7,21 @@ $subscription_status = $ui->getAttribute('staffbulletin_subscription');
 echo $subscription_status; 
 
 if ($subscription_status == 0) { ?>
-    
-    <form method="POST" action="<?=$this->url('/subscription', 'subscribe')?>">
+
+<div class="ccm-block-subscribe-wrapper">
+    <a href="<?php echo $view->action('subscribe', Loader::helper('validation/token')->generate('subscribe_page'))?>" data-action="block-subscribe-page">
         <input type="button" id="subscribe" value="Subscribe for E-Mail alerts.">
-    </form>
-        
-        <?php
-    
+    </a>
+</div>
+
+<?php
 } else {
-    
-    echo '<input type="button" onclick="" value="Un-subscribe for E-Mail alerts.">';
-    
-}
 ?>
+
+<div class="ccm-block-unsubscribe-wrapper">
+    <a href="<?php echo $view->action('unsubscribe', Loader::helper('validation/token')->generate('unsubscribe_page'))?>" data-action="block-unsubscribe-page">
+        <input type="button" id="subscribe" value="Un-Subscribe for E-Mail alerts.">
+    </a>
+</div>
+
+<?php } ?>

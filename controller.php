@@ -1,6 +1,7 @@
 <?php
 
 namespace Concrete\Package\OptInBulletin;
+use \Concrete\Package\LikesThisBlock\Src\RouteHelper;
 use BlockType, Package, Loader;
 
 defined('C5_EXECUTE') or die(_("Access Denied."));
