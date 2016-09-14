@@ -18,7 +18,7 @@ if ($subscription_status == 0) { ?>
 
 <div class="ccm-block-unsubscribe-wrapper">
     <a href="<?php echo $view->action('unsubscribe', Loader::helper('validation/token')->generate('unsubscribe_page'))?>" data-action="block-unsubscribe-page">
-        <input type="button" id="subscribe" value="Un-Subscribe to E-Mail alerts.">
+        <input type="button" id="unsubscribe" value="Un-Subscribe to E-Mail alerts.">
     </a>
 </div>
 

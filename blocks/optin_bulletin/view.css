@@ -1,6 +1,6 @@
 /* Opt-in Bulletin Block */
 
-.ccm-block-subscribe-wrapper input#subscribe {
+.ccm-block-subscribe-wrapper input#subscribe, .ccm-block-unsubscribe-wrapper input#unsubscribe {
     float: right;
     border: none;
     background: #C2324B;
