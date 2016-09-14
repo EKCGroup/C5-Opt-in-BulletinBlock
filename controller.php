@@ -1,7 +1,8 @@
 <?php
 
 namespace Concrete\Package\OptInBulletin;
-use \Concrete\Package\LikesThisBlock\Src\RouteHelper;
+use \Concrete\Core\Attribute\Key\UserKey as UserAttributeKey;
+use \Concrete\Core\Attribute\Type;
 use BlockType, Package, Loader;
 
 defined('C5_EXECUTE') or die(_("Access Denied."));
@@ -21,7 +22,12 @@ class Controller extends Package {
 
     public function install() {
         $pkg = parent::install();
-        BlockType::installBlockTypeFromPackage('optin_bulletin', $pkg); 
+        BlockType::installBlockTypeFromPackage('optin_bulletin', $pkg);
+        UserAttributeKey::add(
+            Type::getByHandle('boolean'), 
+            array('akHandle' => 'staffbulletin_subscription', 'akName' => t('Staff Bulletin Subscription'), 'akIsSearchable' => true), $pkg
+        );
+        
     }
     public function uninstall(){
         parent::uninstall();
