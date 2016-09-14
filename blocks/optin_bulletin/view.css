@@ -1,1 +1,12 @@
 /* Opt-in Bulletin Block */
+
+.ccm-block-subscribe-wrapper input#subscribe {
+    float: right;
+    border: none;
+    background: #C2324B;
+    color: #FFF;
+    padding: 10px 10px 25px 10px;
+    font-size: 1em;
+    margin: -81px -20px 0 0;
+    border-radius: 0px;
+}
