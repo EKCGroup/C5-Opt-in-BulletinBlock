@@ -57,15 +57,19 @@ class Controller extends Package {
     $statement->execute();
     $subscribers = $statement->fetchAll();
 
-    foreach ($subscribers as $item) {
-    //send e-mail to each subscribed user
-    $to      = $item["uEmail"];
-    $subject = $pageData['ptComposer'][83]['name'];
-    $message = $pageData['ptComposer'][84]['description'];
-    $headers = 'From: noreply@cant-col.ac.uk' . "\r\n" .
-    'Reply-To: noreply@cant-col.ac.uk' . "\r\n";
-    mail($to, $subject, $message, $headers);
-    }   //end mail sending loop
+   foreach ($subscribers as $item) {
+   //send e-mail to each subscribed user
+   $to      = $item["uEmail"];
+   $subject = $pageData['ptComposer'][83]['name'];
+   $message = $pageData['ptComposer'][84]['description'];
+   
+   $mail = Loader::helper('mail');
+   $mail ->to($to);
+   $mail ->from('noreply@cant-col.ac.uk');
+   $mail ->setSubject($subject);
+   $mail ->setBody($message);
+   $mail ->sendMail();
+}   //end mail sending loop 
     
     }    //end bulletin post.
 
