@@ -48,7 +48,8 @@ class Controller extends Package {
     $pageData['ptComposer'][83]['name'] =$_POST['ptComposer'][83]['name'];
     $pageData['ptComposer'][84]['description'] = $_POST['ptComposer'][84]['description'];
     $pageData['ptComposer'][88]['content'] = $_POST['ptComposer'][88]['content'];    
-        
+    $pageData['redirectURL'] = "http://intranet.cant-col.ac.uk/staff-portal/staff-bulletin/2016/".$_POST['ptComposer'][107]['url_slug'];    
+
     //Get list of subscribers.
     $db = \Database::connection();
     $statement = $db->prepare('SELECT Users.uEmail
@@ -57,18 +58,28 @@ class Controller extends Package {
     $statement->execute();
     $subscribers = $statement->fetchAll();
 
-    foreach ($subscribers as $item) {
-    //send e-mail to each subscribed user
-    $to      = $item["uEmail"];
+    //Setup e-mail
+    $mail = Loader::helper('mail');
     $subject = $pageData['ptComposer'][83]['name'];
-    $message = $pageData['ptComposer'][84]['description'];
-    $headers = 'From: noreply@cant-col.ac.uk' . "\r\n" .
-    'Reply-To: noreply@cant-col.ac.uk' . "\r\n";
-    mail($to, $subject, $message, $headers);
-    }   //end mail sending loop
-    
-    }    //end bulletin post.
+    $message = "<h2>".$pageData['ptComposer'][83]['name']."</h2>";
+    $message .= "<p>".$pageData['ptComposer'][84]['description']."</p>";
+    $message .= "<p><a href='".$pageData['redirectURL']."' alt='Read more'>Read more</a></p>";
 
+    //Add each subscribed user to bcc field. 
+    foreach ($subscribers as $item) {
+    $bcc.= $item["uEmail"].",";
+    }   //end bcc loop
+
+    //remove trailing comma
+    $bcc = rtrim($bcc,',');
+
+    //Send the e-mail
+    $mail ->bcc($bcc);
+    $mail ->from('noreply@cant-col.ac.uk');
+    $mail ->setSubject($subject);
+    $mail ->setBodyHTML($message);
+    $mail ->sendMail();
+    }    //end bulletin post.
     });  //end event listener.
     }    //end c5 bootstap.
 }
